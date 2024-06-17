@@ -9,15 +9,39 @@
         android:id="@+id/horoscopeFragment"
         android:name="com.elere.horoscapp.ui.home.horocope.HoroscopeFragment"
         android:label="fragment_horoscope"
-        tools:layout="@layout/fragment_horoscope" />
-    <fragment
-        android:id="@+id/palmistryFragment"
-        android:name="com.elere.horoscapp.ui.home.palmistry.PalmistryFragment"
-        android:label="fragment_palmistry"
-        tools:layout="@layout/fragment_palmistry" />
+        tools:layout="@layout/fragment_horoscope" >
+        <action
+            android:id="@+id/action_horoscopeFragment_to_horoscopeDetailActivity"
+            app:destination="@id/horoscopeDetailActivity" />
+    </fragment>
     <fragment
         android:id="@+id/luckFragment"
         android:name="com.elere.horoscapp.ui.home.luck.LuckFragment"
         android:label="fragment_luck"
         tools:layout="@layout/fragment_luck" />
+    <navigation android:id="@+id/navigation3"
+        app:startDestination="@id/navigation2">
+        <navigation
+            android:id="@+id/navigation2"
+            app:startDestination="@id/navigation">
+            <navigation
+                android:id="@+id/navigation"
+                app:startDestination="@id/palmistryFragment">
+                <fragment
+                    android:id="@+id/palmistryFragment"
+                    android:name="com.elere.horoscapp.ui.home.palmistry.PalmistryFragment"
+                    android:label="fragment_palmistry"
+                    tools:layout="@layout/fragment_palmistry" />
+            </navigation>
+        </navigation>
+    </navigation>
+    <activity
+        android:id="@+id/horoscopeDetailActivity"
+        android:name="com.elere.horoscapp.ui.home.detail.HoroscopeDetailActivity"
+        android:label="activity_horoscope_detail"
+        tools:layout="@layout/activity_horoscope_detail" >
+        <argument
+            android:name="type"
+            app:argType="com.elere.horoscapp.domain.model.HoroscopeModel" />
+    </activity>
 </navigation>
