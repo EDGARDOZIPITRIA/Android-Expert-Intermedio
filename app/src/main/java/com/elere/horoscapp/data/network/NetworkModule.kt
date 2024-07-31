@@ -18,6 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+
     @Provides
     @Singleton
     fun provaideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -49,7 +50,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideRepositore(apiService: HoroscopeApiService):Repository{
+    fun provideRepository(apiService: HoroscopeApiService):Repository{
         return RepositoryImpl(apiService)
     }
 

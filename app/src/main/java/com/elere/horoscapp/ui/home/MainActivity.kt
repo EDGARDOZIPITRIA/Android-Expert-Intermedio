@@ -1,12 +1,8 @@
 package com.elere.horoscapp.ui.home
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.DifferentialMotionFlingController
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -28,12 +24,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun iniUI() {
-      initNavigation()
+        initNavigation()
     }
 
     private fun initNavigation() {
-        val navHost: NavHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        navController = navHost.navController
-        binding.bottomNavView.setupWithNavController(navController)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as? NavHostFragment
+        if (navHostFragment == null) {
+            Log.e("MainActivity", "NavHostFragment not found")
+            throw IllegalStateException("NavHostFragment not found")
+        } else {
+            navController = navHostFragment.navController
+            binding.bottomNavView.setupWithNavController(navController)
+        }
     }
 }

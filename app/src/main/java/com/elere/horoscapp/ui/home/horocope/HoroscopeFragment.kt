@@ -12,8 +12,18 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.elere.horoscapp.databinding.FragmentHoroscopeBinding
-import com.elere.horoscapp.domain.model.HoroscopeInfo
-import com.elere.horoscapp.domain.model.HoroscopeInfo.*
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Aquarius
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Aries
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Cancer
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Capricorn
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Gemini
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Leo
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Libra
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Pisces
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Sagittarius
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Scorpio
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Taurus
+import com.elere.horoscapp.domain.model.HoroscopeInfo.Virgo
 import com.elere.horoscapp.domain.model.HoroscopeModel
 import com.elere.horoscapp.ui.home.horocope.adapter.HoroscopeAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +49,7 @@ class HoroscopeFragment : Fragment() {
 
     private fun initList() {
         horoscopeAdapter = HoroscopeAdapter(onItemSelected = {
-            val type:HoroscopeModel = when(it){
+            val type: HoroscopeModel = when (it) {
                 Aquarius -> HoroscopeModel.Aquarius
                 Aries -> HoroscopeModel.Aries
                 Cancer -> HoroscopeModel.Cancer
@@ -56,9 +66,7 @@ class HoroscopeFragment : Fragment() {
 
             findNavController().navigate(
                 HoroscopeFragmentDirections.actionHoroscopeFragmentToHoroscopeDetailActivity(type)
-
             )
-
         })
 
         binding.rvHoroscope.apply {
@@ -85,6 +93,4 @@ class HoroscopeFragment : Fragment() {
         _binding = FragmentHoroscopeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
-
 }

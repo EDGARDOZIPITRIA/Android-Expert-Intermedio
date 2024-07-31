@@ -9,7 +9,7 @@
     <style name="Title">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/dancing</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/secondary</item>
     </style>
 

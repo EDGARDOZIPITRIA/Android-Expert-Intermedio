@@ -29,14 +29,14 @@ android {
                 "proguard-rules.pro"
             )
 
-            resValue("string", "Edname", "HoroscApp")
+            resValue("string", "edname", "HoroscApp")
 
             buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
         }
         getByName("debug"){
-            isDebuggable = true
-            resValue("string", "Edname", "[DEBUG] HoroscApp")
-            buildConfigField("String", "BASE_URL", "\"https://newastro-debug.vercel.app/\"")
+           isDebuggable = true
+            resValue("string", "edname", "[DEBUG] HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")//
 
         }
     }
@@ -71,7 +71,7 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
 
     implementation(libs.androidx.core.ktx)

@@ -10,8 +10,18 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
 import com.elere.horoscapp.R
 import com.elere.horoscapp.databinding.ActivityHoroscopeDetailBinding
-import com.elere.horoscapp.domain.model.HoroscopeModel
-import com.elere.horoscapp.domain.model.HoroscopeModel.*
+import com.elere.horoscapp.domain.model.HoroscopeModel.Aquarius
+import com.elere.horoscapp.domain.model.HoroscopeModel.Aries
+import com.elere.horoscapp.domain.model.HoroscopeModel.Cancer
+import com.elere.horoscapp.domain.model.HoroscopeModel.Capricorn
+import com.elere.horoscapp.domain.model.HoroscopeModel.Gemini
+import com.elere.horoscapp.domain.model.HoroscopeModel.Leo
+import com.elere.horoscapp.domain.model.HoroscopeModel.Libra
+import com.elere.horoscapp.domain.model.HoroscopeModel.Pisces
+import com.elere.horoscapp.domain.model.HoroscopeModel.Sagittarius
+import com.elere.horoscapp.domain.model.HoroscopeModel.Scorpio
+import com.elere.horoscapp.domain.model.HoroscopeModel.Taurus
+import com.elere.horoscapp.domain.model.HoroscopeModel.Virgo
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -19,7 +29,7 @@ import kotlinx.coroutines.launch
 class HoroscopeDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHoroscopeDetailBinding
-    private val horocopeDetailViewModel: HorocopeDetailViewModel by viewModels()
+    private val horoscopeDetailViewModel: HoroscopeDetailViewModel by viewModels()
     private val args: HoroscopeDetailActivityArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +38,7 @@ class HoroscopeDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_horoscope_detail)
         setContentView(binding.root)
         initUI()
-        horocopeDetailViewModel.getHoroscope(args.type)
+        horoscopeDetailViewModel.getHoroscope(args.type)
 
 
     }
@@ -45,7 +55,7 @@ class HoroscopeDetailActivity : AppCompatActivity() {
     private fun initUIState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                horocopeDetailViewModel.state.collect {
+                horoscopeDetailViewModel.state.collect {
                     when (it) {
                         HoroscopeDetailState.Loading -> loadingState()
                         is HoroscopeDetailState.Error -> errorState()
@@ -69,7 +79,7 @@ class HoroscopeDetailActivity : AppCompatActivity() {
         binding.tvTitle.text = state.sign
         binding.tvBody.text = state.prediction
 
-        val image:Int = when(state.HoroscopeModel){
+        val image = when (state.horoscopeModel){
             Aries -> R.drawable.detail_aries
             Taurus -> R.drawable.detail_taurus
             Gemini -> R.drawable.detail_gemini
@@ -83,6 +93,8 @@ class HoroscopeDetailActivity : AppCompatActivity() {
             Aquarius -> R.drawable.detail_aquarius
             Pisces -> R.drawable.detail_pisces
         }
-        binding.ivDatail.setImageResource(image)
+
+        binding.ivDetail.setImageResource(image)
+
     }
 }

@@ -8,20 +8,20 @@ import com.elere.horoscapp.domain.model.HoroscopeInfo
 
 class HoroscopeAdapter (private var horoscopeList: List<HoroscopeInfo> = emptyList(),
     private val onItemSelected:(HoroscopeInfo) -> Unit):
-    RecyclerView.Adapter<HorocopeViewHolder>(){
+    RecyclerView.Adapter<HoroscopeViewHolder>(){
 
         fun updateList(list: List<HoroscopeInfo>){
             horoscopeList = list
             notifyDataSetChanged()
         }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorocopeViewHolder {
-        return HorocopeViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
+        return HoroscopeViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope, parent, false)
         )
         
     }
 
-    override fun onBindViewHolder(holder: HorocopeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
         holder.render(horoscopeList[position], onItemSelected)
     }
 
