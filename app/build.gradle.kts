@@ -58,6 +58,8 @@ android {
 
 dependencies {
 
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.junit.jupiter)
     val navVersion = "2.7.1"
     val cameraVersion = "1.2.3"
 
@@ -87,7 +89,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    //UnitTesting
     testImplementation(libs.junit)
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
+    testImplementation("io.mockk:mockk:1.12.3")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
